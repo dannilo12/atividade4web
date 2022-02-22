@@ -6,6 +6,30 @@ import './index.css';
 //*import App from './App';
 //*import reportWebVitals from './reportWebVitals';
 
+const ListaView = (props) => (
+
+  <div className='App-header'>
+    <center>
+    <h1>Lista de Tarefas</h1>
+
+    <input name="inputTarefa" value={props.inputTarefa} onChange={props.onChange} />
+
+    <button onClick={props.addTarefa} >Add</button>
+
+   { props.tarefas.map((tarefa, index) => (
+   <p>
+     {index+1} - {tarefa} - 
+
+     <span style={{cursor:"pointer"}} onClick={() => props.removeTarefa(index)}>Deletar</span>
+     </p>
+     
+     ))
+     }
+     </center>
+  </div>
+
+);
+
 
 class ListaContainer extends React.Component {
 
@@ -53,29 +77,6 @@ class ListaContainer extends React.Component {
 
 }
 
-const ListaView = (props) => (
-
-  <div className='App-header'>
-    <center>
-    <h1>Lista de Tarefas</h1>
-
-    <input name="inputTarefa" value={props.inputTarefa} onChange={props.onChange} />
-
-    <button onClick={props.addTarefa} >Add</button>
-
-   { props.tarefas.map((tarefa, index) => (
-   <p>
-     {index+1} - {tarefa} - 
-
-     <span style={{cursor:"pointer"}} onClick={() => props.removeTarefa(index)}>Deletar</span>
-     </p>
-     
-     ))
-     }
-     </center>
-  </div>
-
-);
 
 
 ReactDOM.render(
